@@ -1,0 +1,23 @@
+{
+  "name": "datastructure-in-js",
+  "version": "1.0.0",
+  "description": "use js to describe datastructure",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuyingbin19222/datastructure-in-js.git"
+  },
+  "keywords": [
+    "js",
+    "datastructure"
+  ],
+  "author": "liuyingbin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liuyingbin19222/datastructure-in-js/issues"
+  },
+  "homepage": "https://github.com/liuyingbin19222/datastructure-in-js#readme"
+}
