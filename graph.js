@@ -7,7 +7,7 @@
 class mygraph {
     init(val){
         this.val = val;    // 顶点数目;
-        this.edges = 0;
+        this.edges = 0;    //
         this.adj = [];
         this.marked = [];
         for(var i = 0;i < val;i++){
@@ -20,19 +20,23 @@ class mygraph {
         console.log("ceshi");
     }
     addEdge(v,m){   // 添加边 ， 通过两个顶点实现;
-        if(v == null || m == null) return false;
-        if(v >= this.val || m >= this.val)  console.log("超出范围!"); return false;
-        this.adj[v].push(m);
-        this.adj[m].push(v);
-        this.edges++;
+        // if(v == null || m == null) return false;
+        // if(v >= this.val || m >= this.val)  console.log("超出范围!"); return false;
+        if(v < this.val &&  m < this.val){
+            this.adj[v].push(m);
+            this.adj[m].push(v);
+            this.edges++;
+        }
+       
     }
     show(){
         // 显示图;
         for(var i = 0;i < this.val;i++){
-            var edges = "";
+            let edges = '';
             for(var j = 0;j < this.val;j++){
                 if(this.adj[i][j]){
-                    edges += this.adj[i][j];
+                    edges += this.adj[i][j] + ' ';
+                    // console.log(edges);
                 }
             }
             console.log(i + "->"+ edges);

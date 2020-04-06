@@ -11,16 +11,25 @@
     输出: [1,2,3]
 
  */
+resultVal = [];
+array = []
 class tree {
     init(val){
         this.val = val;
         this.left = null;
         this.right = null;
-        this.resultVal = [];
+    
     }
     add(data){
+        for(var i = 0; i < this.resultVal.length;i++){
+            if(data == this.resultVal[i]){
+                console.log("树中已经有该数据");
+               return false; 
+            }
+        }
         this.val = data;
         this.resultVal.push(this.val);
+        
         return this.resultVal;
     }
     preorder_non(root){ // 非递归版进行树的前序遍历;
@@ -38,11 +47,15 @@ class tree {
         }
         return result;
     }
-    preorder(root ,array = []){  // 递归实现;
-        if(root == null) return null;
-        array.push(root.val);
-        this.preorder(root.left,array);
-        this.preorder(root.right,array);
-        return array;
+    preorder(root ){  // 递归实现;
+        if(root !== null) {
+            this.array.push(root.val);
+            this.preorder(root.left);
+            this.preorder(root.right);
+            console.log(array);
+        }
+        return this.array;
     }   
 }
+
+module.exports = tree;
