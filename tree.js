@@ -11,51 +11,146 @@
     输出: [1,2,3]
 
  */
-resultVal = [];
-array = []
-class tree {
-    init(val){
-        this.val = val;
+//定义节点
+class Node {
+    constructor(data){
+        this.root = this;
+        this.data = data;
         this.left = null;
-        this.right = null;
-    
+        this.right = null
     }
-    add(data){
-        for(var i = 0; i < this.resultVal.length;i++){
-            if(data == this.resultVal[i]){
-                console.log("树中已经有该数据");
-               return false; 
+}
+//创建二叉搜索树(BST)）
+class BinarySearchTree {
+    constructor(){
+    this.root = null
+    }
+    //插入节点
+    insert(data){
+        const newNode = new Node(data);
+        const insertNode = (node,newNode) => {
+            if (newNode.data < node.data){
+                if(node.left === null){
+                    node.left = newNode
+                }else {
+                    insertNode(node.left,newNode)
+                }
+            }else {
+                if(node.right === null){
+                    node.right = newNode
+                }else{
+                    insertNode(node.right,newNode)
+                }
+
             }
+        };
+        if(!this.root){
+            this.root = newNode
+        }else {
+            insertNode(this.root,newNode)
+
         }
-        this.val = data;
-        this.resultVal.push(this.val);
-        
-        return this.resultVal;
     }
-    preorder_non(root){ // 非递归版进行树的前序遍历;
-        let result = [];
-        let stack = [];
-        let current = root;
-        while(current || stack.length > 0){
-            while(current){
-                result.push(current.val);
-                stack.push(current.left);
-                current = current.left;
+    //中序遍历
+    inOrder(){
+        let backs = [];
+        const inOrderNode = (node,callback) => {
+            if(node !== null){
+                inOrderNode(node.left,callback);
+                backs.push(callback(node.data));
+                inOrderNode(node.right,callback)
             }
-            current = stack.pop();
-            current = current.right;
+        };
+        inOrderNode(this.root,callback);
+        function callback(v){
+            return v
         }
-        return result;
+        return backs
     }
-    preorder(root ){  // 递归实现;
-        if(root !== null) {
-            this.array.push(root.val);
-            this.preorder(root.left);
-            this.preorder(root.right);
-            console.log(array);
+    //前序遍历
+    preOrder(){
+        let backs = [];
+        const preOrderNode = (node,callback) => {
+            if(node !== null){
+                backs.push(callback(node.data));
+                preOrderNode(node.left,callback);
+                preOrderNode(node.right,callback)
+            }
+        };
+        preOrderNode(this.root,callback);
+        function callback(v){
+            return v
         }
-        return this.array;
-    }   
+        return backs
+    }
+    //后序遍历
+    postOrder(){
+        let backs = [];
+        const postOrderNode = (node,callback) => {
+            if(node !== null){
+                postOrderNode(node.left,callback);
+                postOrderNode(node.right,callback);
+                backs.push(callback(node.data))
+            }
+        };
+        postOrderNode(this.root,callback);
+        function callback(v){
+            return v
+        }
+        return backs
+    }
+    //查找最小值
+    getMin(node){
+        const minNode = node => {
+            return node? (node.left? minNode(node.left):node):null
+        };
+        return minNode( node || this.root)
+    }
+    //查找最大值
+    getMax(node){
+        const minNode = node => {
+            return node? (node.right? minNode(node.right):node):null
+        };
+        return minNode(node || this.root)
+    }
+    //查找特定值
+    find(data){
+        const findNode = (node,data) => {
+            if(node===null) return false;
+            if(node.data===data) return node;
+            return findNode((data < node.data)? node.left: node.right,data)
+        };
+        return findNode(this.root,data)
+
+    }
+    //删除节点
+    remove(data){
+        const removeNode = (node,data) => {
+            if(node === null) return null;
+            if(node.data === data){
+                if(node.left === null && node.right === null) return null;
+                if(node.left === null) return node.right;
+                if(node.right === null) return node.left;
+                if(node.left !==null && node.right !==null){
+                let _node = this.getMin(node.right);
+                node.data = _node.data;
+                node.right = removeNode(node.right,data);
+                return node
+                }
+            } else if(data < node.data){
+                node.left=removeNode(node.left,data);
+                return node
+            } else {
+                node.right=removeNode(node.right,data);
+                return node
+            }
+        };
+        return removeNode(this.root,data)
+    }
 }
 
-module.exports = tree;
+
+
+module.exports = 
+    BinarySearchTree
+

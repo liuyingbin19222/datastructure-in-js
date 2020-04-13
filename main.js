@@ -1,6 +1,9 @@
-var mygraph = require('./graph')
-var mytree = require('./tree')
-var _mytree = new mytree();
+var mygraph = require('./graph');
+
+var BinarySearchTree = require('./tree.js')
+
+
+var _myBinarytree = new  BinarySearchTree();
 var _mygraph =  new mygraph();
 
 _mygraph.init(6);
@@ -11,15 +14,15 @@ _mygraph.hasPathTo(1);
 _mygraph.test();
 _mygraph.show();
 
-console.log("mytree对象:", _mytree);
+console.log("myBinarytree对象:", _myBinarytree);
 
-var node1 =  _mytree.init(4);
-var node2 = _mytree.init(5);
-var node3 = _mytree.init(6);
+  _myBinarytree.insert(4);
+ _myBinarytree.insert(5); 
+ _myBinarytree.insert(6);
 
-console.log(node1);
+console.log("中序遍历:",_myBinarytree.inOrder());
 // node1.right = node3;
 // node1.left = node2;
-// _mytree.preorder(node1);
+// _myBinarytree.preorder(node1);
 
 
