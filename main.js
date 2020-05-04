@@ -2,7 +2,10 @@ var mygraph = require('./graph');
 var heapSort = require('./floyd')
 var BinarySearchTree = require('./tree.js')
 var mystack = require('./stack')
+var mypriorityqueue = require('./priorityQueue')
 
+
+var _mypriorityqueue = new mypriorityqueue();
 var _myBinarytree = new  BinarySearchTree();
 var _mygraph =  new mygraph();
 var _mystack = new mystack()
@@ -38,4 +41,13 @@ _mystack.insert(8);
 _mystack.show();
 _mystack.pop();
 _mystack.show();
+
+console.log("========测试优先级队列=======")
+_mypriorityqueue.enqueue(12,1);
+_mypriorityqueue.enqueue(1,3);
+_mypriorityqueue.enqueue(2,2);
+_mypriorityqueue.enqueue(4,4);
+_mypriorityqueue.show();
+
+
 
