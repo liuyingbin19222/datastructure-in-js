@@ -1,6 +1,6 @@
 {
   "name": "datastructure-in-js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "use js to describe datastructure",
   "main": "main.js",
   "scripts": {

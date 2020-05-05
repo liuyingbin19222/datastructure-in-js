@@ -5,8 +5,9 @@ var mystack = require('./stack')
 var mypriorityqueue = require('./priorityQueue')
 var circleQueue = require('./circleQueue')
 var queue = require('./queue')
+var linkedList = require('./linkedList')
 
-
+var _linkedList = new linkedList();
 var _queue = new queue();
 var _circleQueue = new circleQueue()
 var _mypriorityqueue = new mypriorityqueue();
@@ -63,3 +64,15 @@ _queue.show();
 _circleQueue.enqueue(12);
 _circleQueue.enqueue(23);
 console.log(_circleQueue.getIndex(1));
+
+console.log("===========测试链表========");
+_linkedList.insert(0,123);
+_linkedList.insert(1,34);
+_linkedList.insert(2,36);
+_linkedList.removeat(1);
+_linkedList.size();
+
+
+
+
+
