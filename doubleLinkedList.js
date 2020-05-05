@@ -11,25 +11,28 @@ class Node{
         this.next = null;
     }
 }
+
+
 class doubleLinkedlist {
     constructor(){
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
-    insert(position,element){
+
+    insert( position , element ){
         let index = 0;
         if(position >= 0 && position <= this.length){
             const node = new Node(element);
             let current = this.head;
             let previous = null;
             if(position == 0){
-                if(!this.head){
+                if(this.head){
                     node.next = current;
                     this.head = node;
                     current.previous = node;
                 }else{
-                    this.head = node ;
+                    this.head = node;
                     this.tail = node;
                 }
             }else if(position == this.length) {
@@ -42,6 +45,7 @@ class doubleLinkedlist {
                     previous = current;
                     current = current.next;
                 }
+                
                 node.previous = previous;
                 node.next = current;
                 previous.next = node;
@@ -51,6 +55,7 @@ class doubleLinkedlist {
             return true;
         }
     }
+
     removeat(position){
         if(position < 0 || position > this.length){
             return false;
@@ -80,6 +85,12 @@ class doubleLinkedlist {
             return true;
         }
     }
+
+    size(){
+        console.log("双向列表大小:",this.length);
+        return this.length
+    }
+
 }
 
 module.exports = doubleLinkedlist;

@@ -6,7 +6,11 @@ var mypriorityqueue = require('./priorityQueue')
 var circleQueue = require('./circleQueue')
 var queue = require('./queue')
 var linkedList = require('./linkedList')
+var doubleLinkedlist = require('./doubleLinkedList')
 
+
+
+var _doubleLinkedlist = new doubleLinkedlist()
 var _linkedList = new linkedList();
 var _queue = new queue();
 var _circleQueue = new circleQueue()
@@ -73,6 +77,9 @@ _linkedList.removeat(1);
 _linkedList.size();
 
 
-
-
+console.log("============测试双向链表===========");
+_doubleLinkedlist.insert(0,12);
+_doubleLinkedlist.insert(1,23);
+_doubleLinkedlist.insert(2,34);
+_doubleLinkedlist.size()
 
