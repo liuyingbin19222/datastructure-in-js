@@ -3,8 +3,12 @@ var heapSort = require('./floyd')
 var BinarySearchTree = require('./tree.js')
 var mystack = require('./stack')
 var mypriorityqueue = require('./priorityQueue')
+var circleQueue = require('./circleQueue')
+var queue = require('./queue')
 
 
+var _queue = new queue();
+var _circleQueue = new circleQueue()
 var _mypriorityqueue = new mypriorityqueue();
 var _myBinarytree = new  BinarySearchTree();
 var _mygraph =  new mygraph();
@@ -50,4 +54,12 @@ _mypriorityqueue.enqueue(4,4);
 _mypriorityqueue.show();
 
 
-
+console.log("============测试队列和循环队列============")
+_queue.enqueue(12);
+_queue.enqueue(2);
+_queue.enqueue(4);
+_queue.enqueue(67);
+_queue.show();
+_circleQueue.enqueue(12);
+_circleQueue.enqueue(23);
+console.log(_circleQueue.getIndex(1));

@@ -13,6 +13,7 @@ class queue{
     }
     show(){
         if(this.datalist.length != 0){
+            console.log(this.datalist)
             return this.datalist;
         }else {
             console.log("队列为空");
@@ -28,3 +29,5 @@ class queue{
         return !this.datalist.length;
     }
 }
+
+module.exports = queue;
